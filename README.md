@@ -4,7 +4,15 @@ If you want to analyze your Kotlin Code, especially the references of files, typ
 
 But it is not easy to invoke the Kotlin compiler. So I did some encapsulation based on [detekt](https://github.com/detekt/detekt).
 
-Use it like this:
+I have published this to maven central so add it to your project:
+
+**Gradle**
+
+```gradle
+implementation("com.bennyhuo.kotlin:code-analyzer:1.0")
+```
+
+And use it like this:
 
 ```kotlin
 fun main() {
