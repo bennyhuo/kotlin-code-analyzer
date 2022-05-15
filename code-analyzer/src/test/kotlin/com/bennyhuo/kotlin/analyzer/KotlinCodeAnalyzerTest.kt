@@ -1,5 +1,8 @@
 package com.bennyhuo.kotlin.analyzer
 
+import org.jetbrains.kotlin.descriptors.resolveClassByFqName
+import org.jetbrains.kotlin.incremental.components.NoLookupLocation
+import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtNamedFunction
 import org.jetbrains.kotlin.resolve.BindingContext
@@ -31,5 +34,9 @@ class KotlinCodeAnalyzerTest {
                 }
             }
         }
+
+        // use moduleDescriptor to resolve types from fqname.
+        val string = result.moduleDescriptor.resolveClassByFqName(FqName("java.lang.String"), NoLookupLocation.WHEN_FIND_BY_FQNAME)
+        println(string)
     }
 }
