@@ -7,7 +7,7 @@ import org.jetbrains.kotlin.resolve.BindingContext
 /**
  * Created by benny.
  */
-data class AnalyzeResult(
+data class AnalysisResult(
     val files: List<KtFile>,
     val bindingContext: BindingContext,
     val moduleDescriptor: ModuleDescriptor

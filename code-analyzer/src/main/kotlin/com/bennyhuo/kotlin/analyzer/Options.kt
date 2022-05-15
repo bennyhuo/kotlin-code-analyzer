@@ -17,42 +17,6 @@ class Options {
     var inputPaths: Collection<String> = emptyList()
     var debug: Boolean = false
 
-
-    fun jvmTarget(jvmTarget: String): Options {
-        this.jvmTarget = jvmTarget
-        return this
-    }
-
-    fun languageVersion(languageVersion: String?): Options {
-        this.languageVersion = languageVersion
-        return this
-    }
-
-    fun classpath(classpath: String?): Options {
-        this.classpath = classpath
-        return this
-    }
-
-    fun basePath(basePath: String?): Options {
-        this.basePath = basePath
-        return this
-    }
-
-    fun inputPaths(inputPaths: Collection<String>): Options {
-        this.inputPaths = inputPaths
-        return this
-    }
-
-    fun debug(debug: Boolean): Options {
-        this.debug = debug
-        return this
-    }
-
-    fun inheritClassPath(inheritClassPath: Boolean): Options {
-        this.inheritClassPath = inheritClassPath
-        return this
-    }
-
     internal fun toProcessingSpec(): ProcessingSpec {
         return ProcessingSpecBuilder().apply {
             project {

@@ -7,7 +7,7 @@ import com.bennyhuo.kotlin.analyzer.core.toSettings
  * Created by benny.
  */
 class KotlinCodeAnalyzer(private val options: Options) {
-    fun analyze(): AnalyzeResult {
+    fun analyze(): AnalysisResult {
         return InternalAnalyzer(options.toProcessingSpec().toSettings()).run()
     }
 }
