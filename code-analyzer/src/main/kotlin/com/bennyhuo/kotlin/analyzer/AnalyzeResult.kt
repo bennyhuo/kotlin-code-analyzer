@@ -1,5 +1,6 @@
 package com.bennyhuo.kotlin.analyzer
 
+import org.jetbrains.kotlin.descriptors.ModuleDescriptor
 import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.resolve.BindingContext
 
@@ -8,5 +9,6 @@ import org.jetbrains.kotlin.resolve.BindingContext
  */
 data class AnalyzeResult(
     val files: List<KtFile>,
-    val bindingContext: BindingContext
+    val bindingContext: BindingContext,
+    val moduleDescriptor: ModuleDescriptor
 )

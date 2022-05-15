@@ -2,6 +2,7 @@ package com.bennyhuo.kotlin.analyzer
 
 import org.jetbrains.kotlin.psi.KtClass
 import org.jetbrains.kotlin.psi.KtNamedFunction
+import org.jetbrains.kotlin.resolve.BindingContext
 import org.junit.Test
 
 /**
@@ -12,6 +13,7 @@ class KotlinCodeAnalyzerTest {
     fun basic() {
         val result = KotlinCodeAnalyzer(buildOptions {
             inputPaths = listOf("testData")
+            inheritClassPath = true
         }).analyze()
 
         println(result.files)
@@ -24,6 +26,7 @@ class KotlinCodeAnalyzerTest {
                     }
                     is KtClass -> {
                         println(it.text)
+                        println(result.bindingContext[BindingContext.DECLARATION_TO_DESCRIPTOR, it])
                     }
                 }
             }

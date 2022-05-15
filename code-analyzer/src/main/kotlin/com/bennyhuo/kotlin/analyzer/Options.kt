@@ -11,6 +11,7 @@ class Options {
     var jvmTarget: String = "1.8"
     var languageVersion: String? = null
     var classpath: String? = null
+    var inheritClassPath: Boolean = false
 
     var basePath: String? = null
     var inputPaths: Collection<String> = emptyList()
@@ -47,6 +48,11 @@ class Options {
         return this
     }
 
+    fun inheritClassPath(inheritClassPath: Boolean): Options {
+        this.inheritClassPath = inheritClassPath
+        return this
+    }
+
     internal fun toProcessingSpec(): ProcessingSpec {
         return ProcessingSpecBuilder().apply {
             project {
@@ -64,6 +70,17 @@ class Options {
                 jvmTarget = this@Options.jvmTarget
                 languageVersion = this@Options.languageVersion
                 classpath = this@Options.classpath
+
+                if (inheritClassPath) {
+                    val currentClassPath = System.getProperty("java.class.path")
+                    if (currentClassPath.isNotEmpty()) {
+                        classpath = if (classpath.isNullOrBlank()) {
+                            currentClassPath
+                        } else {
+                            "$currentClassPath${File.pathSeparator}$classpath"
+                        }
+                    }
+                }
             }
         }.build()
     }
