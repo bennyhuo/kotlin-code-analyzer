@@ -9,7 +9,7 @@ I have published this to maven central so add it to your project:
 **Gradle**
 
 ```gradle
-implementation("com.bennyhuo.kotlin:code-analyzer:1.0")
+implementation("com.bennyhuo.kotlin:code-analyzer:1.1")
 ```
 
 And use it like this:
@@ -42,8 +42,9 @@ The definition of `result` is shown as below:
 ```kotlin
 data class AnalyzeResult(
     val files: List<KtFile>,
-    val bindingContext: BindingContext
+    val bindingContext: BindingContext,
+    val moduleDescriptor: ModuleDescriptor
 )
 ```
 
-You can visit the `KtFile` to check the declarations in the corresponding source file, and use the `bindingContext` to find the analysis information such as `REFERENCE_TARGET` for a `TypeReference`.
+You can visit the `KtFile` to check the declarations in the corresponding source file, and use the `bindingContext` to find the analysis information such as `REFERENCE_TARGET` for a `TypeReference`. If you want to resolve types from fqname, use the moduleDescriptor.
