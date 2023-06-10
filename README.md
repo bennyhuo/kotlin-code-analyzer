@@ -48,3 +48,8 @@ data class AnalyzeResult(
 ```
 
 You can visit the `KtFile` to check the declarations in the corresponding source file, and use the `bindingContext` to find the analysis information such as `REFERENCE_TARGET` for a `TypeReference`. If you want to resolve types from fqname, use the moduleDescriptor.
+
+
+# License
+
+[MIT License](LICENSE)

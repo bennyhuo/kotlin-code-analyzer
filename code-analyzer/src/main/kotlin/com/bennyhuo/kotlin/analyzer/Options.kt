@@ -3,6 +3,7 @@ package com.bennyhuo.kotlin.analyzer
 import io.github.detekt.tooling.api.spec.ProcessingSpec
 import io.github.detekt.tooling.dsl.ProcessingSpecBuilder
 import java.io.File
+import java.nio.file.Path
 
 /**
  * Created by benny.
@@ -11,6 +12,7 @@ class Options {
     var jvmTarget: String = "1.8"
     var languageVersion: String? = null
     var classpath: String? = null
+    var jdkHome: String? = null
     var inheritClassPath: Boolean = false
 
     var basePath: String? = null
@@ -45,6 +47,8 @@ class Options {
                         }
                     }
                 }
+                val jdkHomePath = this@Options.jdkHome?.takeIf { it.isNotBlank() } ?: System.getProperty("java.home")
+                jdkHome = Path.of(jdkHomePath)
             }
         }.build()
     }
