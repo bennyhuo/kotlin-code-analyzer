@@ -28,7 +28,7 @@ internal class InternalAnalyzer(
     ): AnalysisResult {
         val analyzer = AnalyzerWithCompilerReport(
             CodeAnalyzerMessageCollector(minSeverity = CompilerMessageSeverity.ERROR),
-            environment.configuration.languageVersionSettings, true
+            environment.configuration.languageVersionSettings
         )
         analyzer.analyzeAndReport(files) {
             TopDownAnalyzerFacadeForJVM.analyzeFilesWithJavaIntegration(
